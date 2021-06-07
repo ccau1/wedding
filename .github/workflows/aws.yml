@@ -80,21 +80,25 @@ jobs:
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
       - name: Fill in the new image ID in the Amazon ECS task definition
-        id: task-def
+        id: task-def-1
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
           container-name: WeddingWebContainer
           image: ${{ steps.build-image-web.outputs.image }}
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def-2
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: task-definition.json
+          task-definition: ${{ steps.task-def-1.outputs.task-definition }}
           container-name: WeddingApiContainer
           image: ${{ steps.build-image-api.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
-          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          task-definition: ${{ steps.task-def-2.outputs.task-definition }}
           service: WeddingService
           cluster: WeddingCluster
           wait-for-service-stability: true
