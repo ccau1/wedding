@@ -6,6 +6,7 @@ import { twCascade } from "@mariusmarais/tailwind-cascade";
 import ListItem from "components/listItem";
 import { FaBan, FaCheckCircle, FaPaperPlane } from "react-icons/fa";
 import Tippy from "@tippyjs/react";
+import { format } from "date-fns";
 
 const RsvpTrackingPage = () => {
   const data = React.useMemo(
@@ -18,7 +19,7 @@ const RsvpTrackingPage = () => {
         },
         col2: 1,
         col3: "backlog",
-        col4: true,
+        col4: new Date(),
       },
       {
         col1: {
@@ -28,7 +29,7 @@ const RsvpTrackingPage = () => {
         },
         col2: 2,
         col3: "pending",
-        col4: false,
+        col4: null,
       },
       {
         col1: {
@@ -38,7 +39,7 @@ const RsvpTrackingPage = () => {
         },
         col2: 1,
         col3: "accepted",
-        col4: true,
+        col4: new Date(),
       },
     ],
     []
@@ -76,7 +77,16 @@ const RsvpTrackingPage = () => {
           return (
             <div className="flex flex-row justify-center">
               {value ? (
-                <FaCheckCircle size={20} className="text-green-400" />
+                <Tippy
+                  // options
+                  content={`${format(value, "LLLL d, yyyy")} [Sent]`}
+                  placement="bottom"
+                  trigger="mouseenter"
+                >
+                  <div>
+                    <FaCheckCircle size={20} className="text-green-400" />
+                  </div>
+                </Tippy>
               ) : (
                 <FaBan size={20} className="text-red-200" />
               )}

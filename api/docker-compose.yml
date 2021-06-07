@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  api:
+    container_name: model-api
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 8080:8080
+      - 9229:9229
+    command: npm run start:debug
+    env_file:
+      - .env
+    environment:
+      - MONGO_URL=mongodb
+      - PORT=8080
+    networks:
+      - model-net
+    depends_on:
+      - mongodb
+  mongodb:
+    container_name: model-mongodb
+    image: mongo:3.6.18-xenial
+    ports:
+      - 27018:27017
+    networks:
+      - model-net
+networks:
+  model-net:
