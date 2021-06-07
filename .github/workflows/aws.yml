@@ -86,6 +86,8 @@ jobs:
           task-definition: task-definition.json
           container-name: WeddingWebContainer
           image: ${{ steps.build-image-web.outputs.image }}
+        with:
+          task-definition: task-definition.json
           container-name: WeddingApiContainer
           image: ${{ steps.build-image-api.outputs.image }}
 
