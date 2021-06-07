@@ -1,0 +1,13 @@
+.header {
+  height: theme("height.24");
+  padding: 0 50px;
+  transition: height 300ms linear, padding 300ms linear,
+    background-color 200ms linear;
+  background-color: transparent;
+}
+
+.headerSticky {
+  padding: 0 20px;
+  height: theme("height.14");
+  background-color: white;
+}

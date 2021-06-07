@@ -1,0 +1,25 @@
+.container {
+}
+
+.header {
+}
+.headerInner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+}
+
+.backToHome {
+  margin: 3rem 0 0;
+}
+
+.content {
+  padding-left: theme("sizes.horizontalPadding");
+  padding-right: theme("sizes.horizontalPadding");
+  background-color: theme("layout.contentBackground");
+}

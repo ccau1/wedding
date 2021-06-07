@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: ${PWD}/web
+    env_file:
+      - ${PWD}/web/.env
+    volumes:
+      - ${PWD}/web:/usr/src/app
+  api:
+    build:
+      context: ${PWD}/api
+    env_file:
+      - ${PWD}/api/.env
+    volumes:
+      - ${PWD}/api:/usr/src/app

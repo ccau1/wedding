@@ -1,0 +1,52 @@
+version: "3.7"
+
+services:
+  web:
+    container_name: full-stack-web
+    build:
+      context: ./web
+      target: development
+    ports:
+      - 3000:3000
+    command: npm run dev
+    env_file:
+      - web/.env
+    environment:
+      - NEXT_PUBLIC_API=api
+    volumes:
+      - ./web:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - full-stack-net
+    depends_on:
+      - api
+  api:
+    container_name: full-stack-api
+    build:
+      context: ./api
+      target: development
+    volumes:
+      - ./api:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 8080:8080
+      - 9229:9229
+    command: npm run start:debug
+    env_file:
+      - api/.env
+    environment:
+      - MONGO_URL=mongodb
+      - PORT=8080
+    networks:
+      - full-stack-net
+    depends_on:
+      - mongodb
+  mongodb:
+    container_name: full-stack-mongodb
+    image: mongo:4.4.6
+    ports:
+      - 27017:27017
+    networks:
+      - full-stack-net
+networks:
+  full-stack-net:

@@ -1,0 +1,235 @@
+/* ./styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* font faces */
+// @font-face {
+//   font-family: "NotoSansHK-Black";
+//   src: url("/fonts/Noto_Sans_HK/NotoSansHK-Black.otf");
+// }
+// @font-face {
+//   font-family: "NotoSansHK-Bold";
+//   src: url("/fonts/Noto_Sans_HK/NotoSansHK-Bold.otf");
+// }
+// @font-face {
+//   font-family: "NotoSansHK-Light";
+//   src: url("/fonts/Noto_Sans_HK/NotoSansHK-Light.otf");
+// }
+// @font-face {
+//   font-family: "NotoSansHK-Medium";
+//   src: url("/fonts/Noto_Sans_HK/NotoSansHK-Medium.otf");
+// }
+// @font-face {
+//   font-family: "NotoSansHK-Regular";
+//   src: url("/fonts/Noto_Sans_HK/NotoSansHK-Regular.otf");
+// }
+// @font-face {
+//   font-family: "NotoSansHK-Thin";
+//   src: url("/fonts/Noto_Sans_HK/NotoSansHK-Thin.otf");
+// }
+@font-face {
+  font-family: "Scriptina";
+  src: url("/fonts/Scriptina/SCRIPTIN.ttf");
+}
+@font-face {
+  font-family: "Blacksword";
+  src: url("/fonts/Blacksword.otf");
+}
+@font-face {
+  font-family: "MateSC-Regular";
+  src: url("/fonts/MateSC-Regular.ttf");
+}
+@font-face {
+  font-family: "great-vibes";
+  src: url("/fonts/great-vibes/GreatVibes-Regular.ttf");
+}
+@font-face {
+  font-family: "Miama";
+  src: url("/fonts/miama/miama.otf");
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "MateSC-Regular";
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  // color: #0070f3;
+  color: theme("colors.gray.700");
+  text-decoration: none;
+}
+
+a.link {
+  color: #0070f3;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.link:hover {
+  text-decoration: underline;
+}
+
+label {
+  color: theme("colors.gray.500");
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+span {
+}
+
+h1 {
+  font-size: 100px;
+  color: theme("colors.gray.500");
+}
+
+h2 {
+  font-size: 80px;
+  color: theme("colors.gray.500");
+}
+
+h3 {
+  font-size: 60px;
+  color: theme("colors.gray.500");
+}
+
+h4 {
+  font-size: 40px;
+  // font-family: "NotoSansHK-Medium";
+  color: theme("colors.gray.500");
+  font-weight: 400;
+}
+
+h5 {
+  font-size: 30px;
+  // font-family: "NotoSansHK-Medium";
+  color: theme("colors.gray.500");
+}
+
+h6 {
+  font-size: 18px;
+  // font-family: "NotoSansHK-Bold";
+  color: theme("colors.gray.500");
+}
+
+strong {
+  // font-family: "NotoSansHK-Medium";
+}
+
+p {
+  font-size: 18px;
+  color: theme("colors.gray.500");
+}
+
+small {
+  font-size: 14px;
+  color: theme("colors.gray.500");
+}
+
+// for xs breakpoint
+@media (max-width: theme("screens.xs.max")) {
+  h1 {
+    font-size: 52px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  h4 {
+    font-size: 24px;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+
+  h6 {
+    font-size: 16px;
+  }
+}
+
+// for sm breakpoint
+@media (min-width: theme("screens.xs.max")) and (max-width: theme("screens.sm.max")) {
+  h1 {
+    font-size: 60px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  h4 {
+    font-size: 24px;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+
+  h6 {
+    font-size: 16px;
+  }
+}
+
+// for md breakpoint
+@media (min-width: theme("screens.sm.max")) and (max-width: theme("screens.md.max")) {
+  h1 {
+    font-size: 80px;
+  }
+
+  h2 {
+    font-size: 60px;
+  }
+
+  h3 {
+    font-size: 40px;
+  }
+
+  h4 {
+    font-size: 30px;
+  }
+
+  h5 {
+    font-size: 24px;
+  }
+
+  h6 {
+    font-size: 18px;
+  }
+}
+
+input[type="number"].no-arrows::-webkit-inner-spin-button,
+input[type="number"].no-arrows::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"].no-arrows {
+  -moz-appearance: textfield; /* Firefox */
+}

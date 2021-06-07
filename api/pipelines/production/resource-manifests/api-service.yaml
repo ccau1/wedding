@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # Step 1: replace all name same as below
+  name: blueprint720-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: blueprint720-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
+  template:
+    metadata:
+      labels:
+        name: blueprint720-api
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: blueprint720-api
+        image: {{DOCKER_USER}}/blueprint720-api:{{TAG}}
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 100m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blueprint720-api
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3000
+  selector:
+    name: blueprint720-api

@@ -1,0 +1,32 @@
+{
+  "name": "full-stack",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "docker-compose -f api/docker-compose.yml -f web/docker-compose.yml -f ./docker-compose.override.yml config | docker-compose -f - up",
+    "log:web": "docker logs --follow full-stack-web",
+    "log:api": "docker logs --follow full-stack-api",
+    "build:web": "cd web && yarn build && cd ..",
+    "build:api": "cd api && yarn build && cd ..",
+    "preinstall": "node -e 'throw new Error(\"Do not install in root. Go into api/web/microservice folder to install\")'"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}

@@ -1,0 +1,11 @@
+.child {
+  display: none;
+}
+
+.container:hover > .child {
+  display: block;
+}
+
+.itemActive {
+  color: theme("colors.primary.500");
+}

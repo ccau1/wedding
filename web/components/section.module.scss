@@ -1,0 +1,24 @@
+.section {
+  display: flex;
+  flex-direction: row;
+  min-height: 50px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-left: theme("sizes.boxedHorizontalPadding");
+  padding-right: theme("sizes.boxedHorizontalPadding");
+}
+.sectionContent {
+  width: 100%;
+  max-width: 100%;
+}
+
+.sectionContentBoxed {
+  box-sizing: content-box;
+  width: theme("sizes.boxedWidth");
+}
+
+.sectionContentHorizontalPadding {
+  padding-left: theme("sizes.horizontalPadding");
+  padding-right: theme("sizes.horizontalPadding");
+}
