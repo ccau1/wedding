@@ -55,7 +55,7 @@ jobs:
         id: build-image-web
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: wedding
+          ECR_REPOSITORY: wedding-web
           IMAGE_TAG: ${{ github.sha }}
         run: |
           # Build a docker container and
