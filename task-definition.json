@@ -1,15 +1,23 @@
 {
   "ipcMode": null,
-  "executionRoleArn": null,
+  "executionRoleArn": "arn:aws:iam::914141072334:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
       "environmentFiles": null,
-      "logConfiguration": null,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": null,
+        "options": {
+          "awslogs-group": "/ecs/WeddingTask",
+          "awslogs-region": "ap-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
       "entryPoint": null,
       "portMappings": [
         {
-          "hostPort": 3000,
+          "hostPort": 80,
           "protocol": "tcp",
           "containerPort": 80
         }
@@ -29,7 +37,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "914141072334.dkr.ecr.ap-east-1.amazonaws.com/wedding",
+      "image": "914141072334.dkr.ecr.ap-east-1.amazonaws.com/wedding-web",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -51,7 +59,15 @@
     {
       "dnsSearchDomains": null,
       "environmentFiles": null,
-      "logConfiguration": null,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": null,
+        "options": {
+          "awslogs-group": "/ecs/WeddingTask",
+          "awslogs-region": "ap-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
       "entryPoint": null,
       "portMappings": [
         {
@@ -96,24 +112,60 @@
     }
   ],
   "placementConstraints": [],
-  "memory": "128",
+  "memory": "2048",
   "taskRoleArn": null,
-  "compatibilities": ["EXTERNAL", "EC2"],
-  "taskDefinitionArn": "arn:aws:ecs:ap-east-1:914141072334:task-definition/WeddingApiTask:2",
-  "family": "WeddingApiTask",
+  "compatibilities": ["EC2", "FARGATE"],
+  "taskDefinitionArn": "arn:aws:ecs:ap-east-1:914141072334:task-definition/WeddingTask:1",
+  "family": "WeddingTask",
   "requiresAttributes": [
     {
       "targetId": null,
       "targetType": null,
       "value": null,
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
       "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-ecr-pull"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.task-eni"
     }
   ],
   "pidMode": null,
-  "requiresCompatibilities": ["EC2"],
-  "networkMode": "bridge",
+  "requiresCompatibilities": ["FARGATE"],
+  "networkMode": "awsvpc",
   "cpu": "1024",
-  "revision": 2,
+  "revision": 1,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
