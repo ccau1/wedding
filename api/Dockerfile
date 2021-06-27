@@ -35,5 +35,6 @@ WORKDIR /usr/src/app
 
 COPY --from=production-builder /usr/src/app/node_modules ./node_modules
 COPY --from=production-builder /usr/src/app/dist ./dist
+COPY --from=production-builder /usr/src/app/.env ./.env
 
 CMD ["node", "dist/main"]
