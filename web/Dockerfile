@@ -35,6 +35,7 @@ WORKDIR /usr/src/app
 COPY --from=production-builder /usr/src/app/node_modules ./node_modules
 COPY --from=production-builder /usr/src/app/public ./public
 COPY --from=production-builder /usr/src/app/.next ./.next
+COPY --from=production-builder /usr/src/app/lib ./lib
 COPY --from=production-builder /usr/src/app/next-env.d.ts ./next-env.d.ts
 COPY --from=production-builder /usr/src/app/next-i18next.config.js ./next-i18next.config.js
 COPY --from=production-builder /usr/src/app/next-sitemap.js ./next-sitemap.js
