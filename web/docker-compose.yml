@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   web:
-    container_name: full-stack-web
+    container_name: wedding-web
     build:
       context: .
       target: development
@@ -16,9 +16,9 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     networks:
-      - full-stack-net
+      - wedding-net
     depends_on:
       - api
 
 networks:
-  full-stack-net:
+  wedding-net:

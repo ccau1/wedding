@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   api:
-    container_name: model-api
+    container_name: wedding-api
     build:
       context: .
       target: development
@@ -19,15 +19,15 @@ services:
       - MONGO_URL=mongodb
       - PORT=8080
     networks:
-      - model-net
+      - wedding-net
     depends_on:
       - mongodb
   mongodb:
-    container_name: model-mongodb
+    container_name: wedding-mongodb
     image: mongo:3.6.18-xenial
     ports:
       - 27018:27017
     networks:
-      - model-net
+      - wedding-net
 networks:
-  model-net:
+  wedding-net:
