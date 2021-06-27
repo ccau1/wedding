@@ -10,7 +10,7 @@ COPY yarn.lock .
 
 RUN yarn install --frozen-lockfile
 
-EXPOSE 3000
+EXPOSE 80
 
 CMD ["yarn", "dev"]
 
@@ -43,5 +43,7 @@ COPY --from=production-builder /usr/src/app/next.config.js ./next.config.js
 COPY --from=production-builder /usr/src/app/postcss.config.js ./postcss.config.js
 COPY --from=production-builder /usr/src/app/tailwind.config.js ./tailwind.config.js
 COPY --from=production-builder /usr/src/app/package.json ./package.json
+
+EXPOSE 80
 
 CMD ["yarn", "start"]

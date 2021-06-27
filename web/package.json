@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 80",
     "postbuild": "next-sitemap",
     "i": "yarn install --frozen-lockfile"
   },
