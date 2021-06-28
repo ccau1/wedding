@@ -4,9 +4,9 @@ import { Provider as ReduxProvider } from "react-redux";
 import nextI18NextConfig from "../next-i18next.config.js";
 // tailwindcss files import, same as @import in global.scss, but
 // needs it here for build version
-import "tailwindcss/dist/base.min.css";
-import "tailwindcss/dist/components.min.css";
-import "tailwindcss/dist/utilities.min.css";
+// import "tailwindcss/dist/base.min.css";
+// import "tailwindcss/dist/components.min.css";
+// import "tailwindcss/dist/utilities.min.css";
 import "../styles/global.scss";
 import { store } from "../redux/store";
 import {
