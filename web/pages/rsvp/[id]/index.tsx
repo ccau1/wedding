@@ -1,7 +1,9 @@
 import Divider from "components/divider";
 import Spacer from "components/spacer";
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import { twCascade } from "@mariusmarais/tailwind-cascade";
+import Checkbox from "components/checkbox";
 
 const scheduleActivities = [
   {
@@ -31,10 +33,22 @@ const scheduleActivities = [
   },
 ];
 
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
 const RsvpPage = () => {
   const [rsvpClicked, setRsvpClicked] = useState(false);
   const [rsvpClickReminderOn, setRsvpClickReminderOn] = useState(false);
   const [reminderTimeout, setReminderTimeout] = useState<NodeJS.Timeout>(null);
+  const [selectedChoice, setSelectedChoice] = useState("");
 
   useEffect(() => {
     setReminderTimeout(
@@ -133,6 +147,22 @@ const RsvpPage = () => {
           RSVP
         </h6>
       </a>
+      {/* <div className="fixed bottom-6 left-0 pl-32 w-full">
+        <div className={twCascade("bg-white shadow-xl w-96 p-4")}>
+          <div className="flex flex-col items-center">
+            <Checkbox
+              checked={selectedChoice === "accept"}
+              text="DELIGHTFULLY ACCEPTS"
+              onChange={() => setSelectedChoice("accept")}
+            />
+            <Checkbox
+              checked={selectedChoice === "decline"}
+              text="REGRETFULLY DECLINES"
+              onChange={() => setSelectedChoice("decline")}
+            />
+          </div>
+        </div>
+      </div> */}
     </div>
   );
 };
